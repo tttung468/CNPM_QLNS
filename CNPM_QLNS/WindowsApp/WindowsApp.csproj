@@ -47,16 +47,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoThangControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaoCaoThangControl.Designer.cs">
+      <DependentUpon>BaoCaoThangControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="HoaDonControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HoaDonControl.Designer.cs">
+      <DependentUpon>HoaDonControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KhachHangControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KhachHangControl.Designer.cs">
+      <DependentUpon>KhachHangControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhapSachControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NhapSachControl.Designer.cs">
+      <DependentUpon>NhapSachControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QUAN_LY_NHA_SACHDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QUAN_LY_NHA_SACHDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SachControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SachControl.Designer.cs">
+      <DependentUpon>SachControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThayDoiQuyDinhControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThayDoiQuyDinhControl.Designer.cs">
+      <DependentUpon>ThayDoiQuyDinhControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TheLoaiControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TheLoaiControl.Designer.cs">
+      <DependentUpon>TheLoaiControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BaoCaoThangControl.resx">
+      <DependentUpon>BaoCaoThangControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoaDonControl.resx">
+      <DependentUpon>HoaDonControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KhachHangControl.resx">
+      <DependentUpon>KhachHangControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhapSachControl.resx">
+      <DependentUpon>NhapSachControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -67,6 +126,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SachControl.resx">
+      <DependentUpon>SachControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThayDoiQuyDinhControl.resx">
+      <DependentUpon>ThayDoiQuyDinhControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TheLoaiControl.resx">
+      <DependentUpon>TheLoaiControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,6 +144,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QUAN_LY_NHA_SACHDataSet.xsc">
+      <DependentUpon>QUAN_LY_NHA_SACHDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QUAN_LY_NHA_SACHDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QUAN_LY_NHA_SACHDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QUAN_LY_NHA_SACHDataSet.xss">
+      <DependentUpon>QUAN_LY_NHA_SACHDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
