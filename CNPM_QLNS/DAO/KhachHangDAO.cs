@@ -15,7 +15,7 @@ namespace DAO
             dp = new DataProvider();
         }
 
-        public List<KhachHang> getAll()
+        public List<KhachHang> getAllReturnList()
         {
             String query = "select MaKhachHang,HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi from KhachHang";
             DataTable dt = this.dp.ExecuteQuery(query);
@@ -36,12 +36,43 @@ namespace DAO
             return lstKhachHang;
         }
 
+        public DataTable getAllReturnDataTable()
+        {
+            String query = "select MaKhachHang as [Mã Khách hàng], " +
+                "HoTen as [Họ tên], DiaChi as [Địa chỉ], DienThoai as [Điện thoại], " +
+                "SoTienNoCuoi as [Tiền nợ] from KhachHang";
+            DataTable dt = this.dp.ExecuteQuery(query);
+            return dt;
+        }
+
         public KhachHang getByID(int MaKhachHang)
         {
-
             String query = "select MaKhachHang,HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi from KhachHang where MaKhachHang = @MaKhachHang";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
             SqlParameter param = new SqlParameter("MaKhachHang", MaKhachHang);
+            sqlParameters.Add(param);
+            DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
+            if (dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                KhachHang khachHang = new KhachHang();
+                khachHang.MaKhachHang = (int)dt.Rows[0]["MaKhachHang"];
+                khachHang.HoTen = dt.Rows[0]["HoTen"].ToString();
+                khachHang.DiaChi = dt.Rows[0]["DiaChi"].ToString();
+                khachHang.DienThoai = dt.Rows[0]["DienThoai"].ToString();
+                khachHang.SoTienNoDau = (Decimal)dt.Rows[0]["SoTienNoDau"];
+                khachHang.SoTienNoCuoi = (Decimal)dt.Rows[0]["SoTienNoCuoi"];
+
+                return khachHang;
+            }
+        }
+
+        public KhachHang getBySDT(String DienThoai)
+        {
+            String query = "select MaKhachHang,HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi from KhachHang where DienThoai = @DienThoai";
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+            SqlParameter param = new SqlParameter("DienThoai", DienThoai);
             sqlParameters.Add(param);
             DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
             if (dt.Rows.Count == 0)
@@ -100,7 +131,7 @@ namespace DAO
             SqlParameter param_DienThoai = new SqlParameter("DienThoai", khachHang.DienThoai);
             SqlParameter param_SoTienNoDau = new SqlParameter("SoTienNoDau", khachHang.SoTienNoDau);
             SqlParameter param_SoTienNoCuoi = new SqlParameter("SoTienNoCuoi", khachHang.SoTienNoCuoi);
-            SqlParameter param_MaKhachHang = new SqlParameter("HoTen", khachHang.MaKhachHang);
+            SqlParameter param_MaKhachHang = new SqlParameter("MaKhachHang", khachHang.MaKhachHang);
 
             sqlParameters.Add(param_HoTen);
             sqlParameters.Add(param_DiaChi);

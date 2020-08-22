@@ -37,7 +37,7 @@ namespace DAO
         public QuyDinh getByID(int MaQuyDinh)
         {
 
-            String query = "select MaQuyDinh TenQuyDinh,GiaTri from QuyDinh where MaQuyDinh = @MaQuyDinh";
+            String query = "select MaQuyDinh, TenQuyDinh, GiaTri from QuyDinh where MaQuyDinh = @MaQuyDinh";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
             SqlParameter param = new SqlParameter("MaQuyDinh", MaQuyDinh);
             sqlParameters.Add(param);
@@ -88,6 +88,8 @@ namespace DAO
 
             SqlParameter param_GiaTri = new SqlParameter("GiaTri", quyDinh.GiaTri);
             sqlParameters.Add(param_GiaTri);
+            SqlParameter param_MaQuyDinh = new SqlParameter("MaQuyDinh", quyDinh.MaQuyDinh);
+            sqlParameters.Add(param_MaQuyDinh);
 
             return this.dp.ExecuteNonQuery(query, sqlParameters);
         }

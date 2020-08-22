@@ -15,7 +15,7 @@ namespace DAO
             dp = new DataProvider();
         }
 
-        public List<TheLoai> getAll()
+        public List<TheLoai> getAllReturnList()
         {
             String query = "select MaTheLoai,TenTheLoai from TheLoai";
             DataTable dt = this.dp.ExecuteQuery(query);
@@ -32,9 +32,9 @@ namespace DAO
             return lstTheLoai;
         }
 
-        public DataTable getAllForComboBox()
+        public DataTable getAllReturnDataTable()
         {
-            String query = "select MaTheLoai,TenTheLoai from TheLoai";
+            String query = "select MaTheLoai as [Mã thể loại], TenTheLoai as [Tên thể loại] from TheLoai";
             DataTable dt = this.dp.ExecuteQuery(query);
 
             return dt;
@@ -61,10 +61,30 @@ namespace DAO
             }
         }
 
+        public TheLoai getByTenTheLoai(String TenTheLoai)
+        {
+
+            String query = "select MaTheLoai, TenTheLoai from TheLoai where TenTheLoai = @TenTheLoai";
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+            SqlParameter param = new SqlParameter("TenTheLoai", TenTheLoai);
+            sqlParameters.Add(param);
+            DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
+            if (dt.Rows.Count == 0)
+                return null;
+            else
+            {
+                TheLoai theLoai = new TheLoai();
+                theLoai.MaTheLoai = (int)dt.Rows[0]["MaTheLoai"];
+                theLoai.TenTheLoai = dt.Rows[0]["TenTheLoai"].ToString();
+
+                return theLoai;
+            }
+        }
+
         public Boolean insert(TheLoai theLoai)
         {
 
-            String query = "insert TheLoai(TenTheLoai) values(@TenTheLoai))";
+            String query = "insert TheLoai(TenTheLoai) values(@TenTheLoai)";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             SqlParameter param_TenTheLoai = new SqlParameter("TenTheLoai", theLoai.TenTheLoai);

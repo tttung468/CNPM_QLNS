@@ -15,12 +15,12 @@ namespace BUS
             this.sachDAO = new SachDAO();
         }
 
-        public List<Sach> getAll()
+        public List<Sach> getAllReturnList()
         {
             return this.sachDAO.getAll();
         }
 
-        public DataTable getAllForDgvSach()
+        public DataTable getAllReturnDataTable()
         {
             return this.sachDAO.getAllForDgvSach();
         }

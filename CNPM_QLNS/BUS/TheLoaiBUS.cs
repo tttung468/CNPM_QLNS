@@ -15,19 +15,24 @@ namespace BUS
             this.theLoaiDAO = new TheLoaiDAO();
         }
 
-        public List<TheLoai> getAll()
+        public List<TheLoai> getAllReturnList()
         {
-            return this.theLoaiDAO.getAll();
+            return this.theLoaiDAO.getAllReturnList();
         }
 
-        public DataTable getAllForComboBox()
+        public DataTable getAllReturnDataTable()
         {
-            return this.theLoaiDAO.getAllForComboBox();
+            return this.theLoaiDAO.getAllReturnDataTable();
         }
 
         public TheLoai getByID(int maTheLoai)
         {
             return this.theLoaiDAO.getByID(maTheLoai);
+        }
+
+        public TheLoai getByTenTheLoai(String TenTheLoai)
+        {
+            return this.theLoaiDAO.getByTenTheLoai(TenTheLoai);
         }
 
         public Boolean insert(TheLoai theLoai)

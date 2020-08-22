@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BUS
 {
-    class QuyDinhBUS
+    public class QuyDinhBUS
     {
         private QuyDinhDAO quyDinhDAO;
 
