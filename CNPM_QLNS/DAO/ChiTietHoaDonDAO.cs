@@ -42,8 +42,8 @@ namespace DAO
             String query = "select MaHoaDon,MaSach,SoLuongMua from ChiTietHoaDon where MaHoaDon = @MaHoaDon and MaSach=@MaSach";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
             SqlParameter param_MaHoaDon = new SqlParameter("MaHoaDon", MaHoaDon);
-            sqlParameters.Add(param_MaHoaDon);
             SqlParameter param_MaSach = new SqlParameter("MaSach", MaSach);
+            sqlParameters.Add(param_MaHoaDon);
             sqlParameters.Add(param_MaSach);
             DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
             if (dt.Rows.Count == 0)
@@ -59,7 +59,7 @@ namespace DAO
                 return chiTietHoaDon;
             }
         }
-
+       
         public List<ChiTietHoaDon> getByMaHoaDon(int MaHoaDon)
         {
 
@@ -68,7 +68,6 @@ namespace DAO
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
             SqlParameter param = new SqlParameter("MaHoaDon", MaHoaDon);
             sqlParameters.Add(param);
-
             DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
             List<ChiTietHoaDon> lstChiTietHoaDon = new List<ChiTietHoaDon>();
             foreach (DataRow dr in dt.Rows)
@@ -82,6 +81,7 @@ namespace DAO
             }
             return lstChiTietHoaDon;
         }
+     
 
         public Boolean insert(ChiTietHoaDon chiTietHoaDon)
         {

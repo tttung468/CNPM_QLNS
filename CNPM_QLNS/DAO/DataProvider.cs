@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace DAO
 {
-    class DataProvider
+    public class DataProvider
     {
         public SqlConnection connection { get; set; }
 

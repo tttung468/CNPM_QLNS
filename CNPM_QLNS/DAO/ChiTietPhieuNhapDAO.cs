@@ -37,40 +37,18 @@ namespace DAO
             return lstChiTietPhieuNhap;
         }
 
-        public List<ChiTietPhieuNhap> getByID(int MaPhieuNhap, int MaSach)
+        public ChiTietPhieuNhap getByID(int MaPhieuNhap, int MaSach)
         {
 
             String query = "select MaPhieuNhap,MaSach,SoLuongNhap from ChiTietPhieuNhap where MaPhieuNhap=@MaPhieuNhap and MaSach=@MaSach";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             SqlParameter param_MaPhieuNhap = new SqlParameter("MaPhieuNhap", MaPhieuNhap);
-          
+
             SqlParameter param_MaSach = new SqlParameter("MaSach", MaSach);
             sqlParameters.Add(param_MaPhieuNhap);
             sqlParameters.Add(param_MaSach);
 
-            DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
-            List<ChiTietPhieuNhap> lstChiTietPhieuNhap = new List<ChiTietPhieuNhap>();
-            foreach (DataRow dr in dt.Rows)
-            {
-                ChiTietPhieuNhap chiTietPhieuNhap = new ChiTietPhieuNhap();
-                chiTietPhieuNhap.MaPhieuNhap = (int)dr["MaPhieuNhap"];
-                chiTietPhieuNhap.MaSach = (int)dr["MaSach"];
-
-                chiTietPhieuNhap.SoLuongNhap = (int)dr["SoLuongNhap"];
-
-                lstChiTietPhieuNhap.Add(chiTietPhieuNhap);
-            }
-            return lstChiTietPhieuNhap;
-        }
-        public ChiTietPhieuNhap getByMaPhieuNhap(int MaPhieuNhap)
-        {
-
-            String query = "select MaPhieuNhap,MaSach,SoLuongNhap from ChiTietPhieuNhap where MaPhieuNhap=@MaPhieuNhap";
-            List<SqlParameter> sqlParameters = new List<SqlParameter>();
-            SqlParameter param = new SqlParameter("MaPhieuNhap", MaPhieuNhap);
-            sqlParameters.Add(param);
-            
             DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
             if (dt.Rows.Count == 0)
                 return null;
@@ -86,6 +64,26 @@ namespace DAO
             }
         }
 
+        public List<ChiTietPhieuNhap> getByMaPhieuNhap(int MaPhieuNhap)
+        {
+            String query = "select MaPhieuNhap,MaSach,SoLuongNhap from ChiTietPhieuNhap where MaPhieuNhap=@MaPhieuNhap";
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+            SqlParameter param = new SqlParameter("MaPhieuNhap", MaPhieuNhap);
+            sqlParameters.Add(param);
+            DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
+            List<ChiTietPhieuNhap> lstChiTietPhieuNhap = new List<ChiTietPhieuNhap>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                ChiTietPhieuNhap chiTietPhieuNhap = new ChiTietPhieuNhap();
+                chiTietPhieuNhap.MaPhieuNhap = (int)dr["MaPhieuNhap"];
+                chiTietPhieuNhap.MaSach = (int)dr["MaSach"];
+                chiTietPhieuNhap.SoLuongNhap = (int)dr["SoLuongNhap"];
+                lstChiTietPhieuNhap.Add(chiTietPhieuNhap);
+            }
+            return lstChiTietPhieuNhap;
+
+        }
+       
         public Boolean insert(ChiTietPhieuNhap chiTietPhieuNhap)
         {
 

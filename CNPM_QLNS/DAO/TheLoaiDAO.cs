@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAO
 {
@@ -33,6 +30,14 @@ namespace DAO
                 lstTheLoai.Add(theLoai);
             }
             return lstTheLoai;
+        }
+
+        public DataTable getAllForComboBox()
+        {
+            String query = "select MaTheLoai,TenTheLoai from TheLoai";
+            DataTable dt = this.dp.ExecuteQuery(query);
+
+            return dt;
         }
 
         public TheLoai getByID(int MaTheLoai)
@@ -63,8 +68,8 @@ namespace DAO
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             SqlParameter param_TenTheLoai = new SqlParameter("TenTheLoai", theLoai.TenTheLoai);
-            
-            
+
+
             sqlParameters.Add(param_TenTheLoai);
 
             return this.dp.ExecuteNonQuery(query, sqlParameters);
