@@ -2,9 +2,6 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BUS
 {
@@ -22,9 +19,9 @@ namespace BUS
             return this.khachHangDAO.getAll();
         }
 
-        public KhachHang getByID(int maKH)
+        public KhachHang getByID(int maKhachHang)
         {
-            return this.khachHangDAO.getByID(maKH);
+            return this.khachHangDAO.getByID(maKhachHang);
         }
 
         public Boolean insert(KhachHang khachHang)
