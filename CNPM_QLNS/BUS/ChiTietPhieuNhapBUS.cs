@@ -2,9 +2,6 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BUS
 {
@@ -22,10 +19,15 @@ namespace BUS
             return this.chiTietPhieuNhapDAO.getAll();
         }
 
-        /*public ChiTietPhieuNhap getByID(int MaPhieuNhap, int MaSach)
+        public ChiTietPhieuNhap getByID(int MaPhieuNhap, int MaSach)
         {
             return this.chiTietPhieuNhapDAO.getByID(MaPhieuNhap, MaSach);
-        }*/
+        }
+
+        public List<ChiTietPhieuNhap> getByMaPhieuNhap(int MaPhieuNhap)
+        {
+            return this.chiTietPhieuNhapDAO.getByMaPhieuNhap(MaPhieuNhap);
+        }
 
         public Boolean insert(ChiTietPhieuNhap chiTietPhieuNhap)
         {

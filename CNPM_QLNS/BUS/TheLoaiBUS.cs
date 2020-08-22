@@ -2,9 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace BUS
 {
@@ -20,6 +18,11 @@ namespace BUS
         public List<TheLoai> getAll()
         {
             return this.theLoaiDAO.getAll();
+        }
+
+        public DataTable getAllForComboBox()
+        {
+            return this.theLoaiDAO.getAllForComboBox();
         }
 
         public TheLoai getByID(int maTheLoai)
