@@ -13,17 +13,8 @@ namespace WindowsApp
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'qUAN_LY_NHA_SACHDataSet.Sach' table. You can move, or remove it, as needed.
-            /*dgv_Sach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_Sach.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            LoadDanhSachSach();*/
+            
         }
-
-        /*private void LoadDanhSachSach()
-        {
-            SachDAO sachDAO = new SachDAO();
-            dgv_Sach.DataSource = sachDAO.getAllForDgvSach();
-        }*/
 
 
         private void button1_Click(object sender, EventArgs e)

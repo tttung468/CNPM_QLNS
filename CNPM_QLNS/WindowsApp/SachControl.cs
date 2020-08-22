@@ -24,24 +24,23 @@ namespace WindowsApp
             LoadDgvSach();
 
             //load txt_TenSach
-            loadTxtTenSach();
+            loadComboBoxLoaiSach();
         }
 
-        private void loadTxtTenSach()
+        private void loadComboBoxLoaiSach()
         {
             TheLoaiBUS theLoaiBUS = new TheLoaiBUS();
+            DataTable dt = theLoaiBUS.getAllReturnDataTable();
 
-            DataTable dt = theLoaiBUS.getAllForComboBox();
-
-            cbLoaiSach.DisplayMember = "TenTheLoai";
-            cbLoaiSach.ValueMember = "MaTheLoai";
+            cbLoaiSach.DisplayMember = "Tên thể loại";
+            cbLoaiSach.ValueMember = "Mã thể loại";
             cbLoaiSach.DataSource = dt;
         }
 
         private void LoadDgvSach()
         {
             SachBUS sachBUS = new SachBUS();
-            dgvSachSach.DataSource = sachBUS.getAllForDgvSach();
+            dgvSachSach.DataSource = sachBUS.getAllReturnDataTable();
         }
 
         private void dgvSachSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -64,6 +63,12 @@ namespace WindowsApp
 
         private void buttonThem_Click(object sender, EventArgs e)
         {
+            if (txtTenSach.Text.Equals("") == true || txtTacGia.Text.Equals("") == true)
+            {
+                MessageBox.Show("Nhập dữ liệu để thêm thể loại", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Sach sach = new Sach(txtTenSach.Text, this.maLoaiSach, txtTacGia.Text, 0, 0, numericDonGia.Value);
             SachBUS sachBUS = new SachBUS();
 
@@ -72,7 +77,7 @@ namespace WindowsApp
                 //Sach chua ton tai trong CSDL
                 if(numericLuongTon.Value != 0)
                 {
-                    MessageBox.Show("Lượng tồn phải bằng 0", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lượng tồn ban đầu phải bằng 0", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -98,6 +103,12 @@ namespace WindowsApp
 
         private void buttonSua_Click(object sender, EventArgs e)
         {
+            if (txtTenSach.Text.Equals("") == true || txtTacGia.Text.Equals("") == true)
+            {
+                MessageBox.Show("Chọn sách cập nhật", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Sach sach = new Sach(txtTenSach.Text, this.maLoaiSach, txtTacGia.Text, 0, Convert.ToInt32(numericLuongTon.Value), numericDonGia.Value);
             sach.MaSach = this.maSach;
             SachBUS sachBUS = new SachBUS();
@@ -121,6 +132,12 @@ namespace WindowsApp
 
         private void button_Xoa_Click(object sender, EventArgs e)
         {
+            if (txtTenSach.Text.Equals("") == true || txtTacGia.Text.Equals("") == true)
+            {
+                MessageBox.Show("Chọn sách để xóa", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa sách '" + txtTenSach.Text + "' hay không ?",
                 "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             

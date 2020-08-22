@@ -189,7 +189,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(302, 90);
+            this.label2.Location = new System.Drawing.Point(357, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(423, 34);
             this.label2.TabIndex = 4;
@@ -200,7 +200,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Schoolbook", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(302, 29);
+            this.label1.Location = new System.Drawing.Point(332, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(482, 34);
             this.label1.TabIndex = 3;
