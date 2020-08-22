@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAO
 {
@@ -15,7 +12,7 @@ namespace DAO
 
         public DataProvider()
         {
-            String sConnectString = ConfigurationManager.ConnectionStrings["QuanLySanPhamDB"].ConnectionString.ToString();
+            String sConnectString = ConfigurationManager.ConnectionStrings["QuanLyNhaSachDB"].ConnectionString.ToString();
             this.connection = new SqlConnection(sConnectString);
         }
 
