@@ -1,13 +1,5 @@
-﻿using DAO;
-using DTO;
+﻿using DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsApp
@@ -16,10 +8,7 @@ namespace WindowsApp
     {
         public frmMain()
         {
-            InitializeComponent();
-            SidePanel.Height = button1.Height;
-            SidePanel.Top = button1.Top;
-            sachControl1.BringToFront();
+            InitializeComponent();   
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -41,50 +30,76 @@ namespace WindowsApp
         {
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
-            sachControl1.BringToFront();
+
+            SachControl sachControl = new SachControl();
+            showControl(sachControl);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button2.Height;
             SidePanel.Top = button2.Top;
-            theLoaiControl1.BringToFront();
+
+            TheLoaiControl theLoaiControl = new TheLoaiControl();
+            showControl(theLoaiControl);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button3.Height;
             SidePanel.Top = button3.Top;
-            khachHangControl1.BringToFront();
+
+            KhachHangControl khachHangControl = new KhachHangControl();
+            showControl(khachHangControl);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button4.Height;
             SidePanel.Top = button4.Top;
-            nhapSachControl1.BringToFront();
+
+            NhapSachControl nhapSachControl = new NhapSachControl();
+            showControl(nhapSachControl);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button5.Height;
             SidePanel.Top = button5.Top;
-            hoaDonControl1.BringToFront();
+
+            HoaDonControl hoaDonControl = new HoaDonControl();
+            showControl(hoaDonControl);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button6.Height;
             SidePanel.Top = button6.Top;
-            baoCaoThangControl1.BringToFront();
+
+            BaoCaoThangControl baoCaoThangControl = new BaoCaoThangControl();
+            showControl(baoCaoThangControl);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button7.Height;
             SidePanel.Top = button7.Top;
-            thayDoiQuyDinhControl1.BringToFront();
+
+            ThayDoiQuyDinhControl thayDoiQuyDinh = new ThayDoiQuyDinhControl();
+            showControl(thayDoiQuyDinh);
         }
+
+        private void showControl(Control control)
+        {
+            panelContent.Controls.Clear();
+
+            control.Dock = DockStyle.Fill;
+            control.BringToFront();
+            control.Focus();
+
+            panelContent.Controls.Add(control);
+        }
+
         private void panel5_Paint(object sender, PaintEventArgs e)
         {
 
@@ -99,5 +114,12 @@ namespace WindowsApp
         {
 
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
     }
 }
