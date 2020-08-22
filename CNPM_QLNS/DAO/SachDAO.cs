@@ -83,14 +83,16 @@ namespace DAO
         public Sach getByThuocTinh(String TenSach, int MaTheLoai, String TacGia)
         {
 
-            String query = "select MaSach,TenSach,MaTheLoai,TacGia,SoLuongTonDau,SoLuongTonCuoi,DonGia  from Sach where TenSach=@TenSach and MaTheLoai=@MaTheLoai TacGia=@TacGia";
+            String query = "select MaSach,TenSach,MaTheLoai,TacGia,SoLuongTonDau,SoLuongTonCuoi,DonGia  from Sach where TenSach=@TenSach and MaTheLoai=@MaTheLoai and TacGia=@TacGia";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
+
             SqlParameter param_TenSach = new SqlParameter("TenSach", TenSach);
             sqlParameters.Add(param_TenSach);
             SqlParameter param_MaTheLoai = new SqlParameter("MaTheLoai", MaTheLoai);
             sqlParameters.Add(param_MaTheLoai);
             SqlParameter param_TacGia = new SqlParameter("TacGia", TacGia);
             sqlParameters.Add(param_TacGia);
+
             DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
             if (dt.Rows.Count == 0)
                 return null;
@@ -146,22 +148,22 @@ namespace DAO
         public Boolean update(Sach sach)
         {
 
-            String query = "update Sach set TenSach = @TenSach, MaTheLoai = @MaTheLoai, TacGia = @TacGia, SoLuongTonDau = @SoLuongTonDau, SoLuongTonCuoi = @SoLuongTonCuoi, DonGia = @DonGia where MaSach = @MaSach";
+            String query = "update Sach set TenSach = @TenSach, MaTheLoai = @MaTheLoai, TacGia = @TacGia, SoLuongTonCuoi = @SoLuongTonCuoi, DonGia = @DonGia where MaSach = @MaSach";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             SqlParameter param_TenSach = new SqlParameter("TenSach", sach.TenSach);
             SqlParameter param_MaTheLoai = new SqlParameter("MaTheLoai", sach.MaTheLoai);
             SqlParameter param_TacGia = new SqlParameter("TacGia", sach.TacGia);
-            SqlParameter param_SoLuongTonDau = new SqlParameter("SoLuongTonDau", sach.SoLuongTonDau);
             SqlParameter param_SoLuongTonCuoi = new SqlParameter("SoLuongTonCuoi", sach.SoLuongTonCuoi);
             SqlParameter param_DonGia = new SqlParameter("DonGia", sach.DonGia);
+            SqlParameter param_MaSach = new SqlParameter("MaSach", sach.MaSach);
 
             sqlParameters.Add(param_TenSach);
             sqlParameters.Add(param_MaTheLoai);
             sqlParameters.Add(param_TacGia);
-            sqlParameters.Add(param_SoLuongTonDau);
             sqlParameters.Add(param_SoLuongTonCuoi);
             sqlParameters.Add(param_DonGia);
+            sqlParameters.Add(param_MaSach);
             return this.dp.ExecuteNonQuery(query, sqlParameters);
         }
 

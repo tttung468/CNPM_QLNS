@@ -30,6 +30,11 @@ namespace BUS
             return this.sachDAO.getByID(maQuyDinh);
         }
 
+        public Sach getByThuocTinh(String TenSach, int MaTheLoai, String TacGia)
+        {
+            return sachDAO.getByThuocTinh(TenSach, MaTheLoai, TacGia);
+        }
+
         public Boolean insert(Sach sach)
         {
             return this.sachDAO.insert(sach);
