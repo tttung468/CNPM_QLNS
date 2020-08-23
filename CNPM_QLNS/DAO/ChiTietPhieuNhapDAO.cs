@@ -18,7 +18,7 @@ namespace DAO
             dp = new DataProvider();
         }
 
-        public List<ChiTietPhieuNhap> getAll()
+        public List<ChiTietPhieuNhap> getAllReturnList()
         {
             String query = "select MaPhieuNhap,MaSach,SoLuongNhap from ChiTietPhieuNhap";
             DataTable dt = this.dp.ExecuteQuery(query);
@@ -35,6 +35,15 @@ namespace DAO
                 lstChiTietPhieuNhap.Add(chiTietPhieuNhap);
             }
             return lstChiTietPhieuNhap;
+        }
+
+        public DataTable getAllReturnDataTable()
+        {
+            String query = "select MaPhieuNhap as [Mã phiếu nhập]," +
+                "MaSach as [Mã sách], SoLuongNhap as [Số lượng nhập] from ChiTietPhieuNhap";
+            DataTable dt = this.dp.ExecuteQuery(query);
+
+            return dt;
         }
 
         public ChiTietPhieuNhap getByID(int MaPhieuNhap, int MaSach)
@@ -83,7 +92,20 @@ namespace DAO
             return lstChiTietPhieuNhap;
 
         }
-       
+
+        public DataTable getByMaPhieuNhapReturnDataTable(int MaPhieuNhap)
+        {
+            String query = "select MaPhieuNhap as [Mã phiếu nhập], MaSach as [Mã sách], " +
+                "SoLuongNhap as [Số lượng nhập] from ChiTietPhieuNhap where MaPhieuNhap = @MaPhieuNhap";
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+            SqlParameter param = new SqlParameter("MaPhieuNhap", MaPhieuNhap);
+            sqlParameters.Add(param);
+            DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
+
+            return dt;
+
+        }
+
         public Boolean insert(ChiTietPhieuNhap chiTietPhieuNhap)
         {
 
@@ -91,7 +113,7 @@ namespace DAO
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             SqlParameter param_MaPhieuNhap = new SqlParameter("MaPhieuNhap", chiTietPhieuNhap.MaPhieuNhap);
-            SqlParameter param_MaSach = new SqlParameter("MaSach", chiTietPhieuNhap.MaPhieuNhap);
+            SqlParameter param_MaSach = new SqlParameter("MaSach", chiTietPhieuNhap.MaSach);
             SqlParameter param_SoLuongNhap = new SqlParameter("SoLuongNhap", chiTietPhieuNhap.SoLuongNhap);
 
             sqlParameters.Add(param_MaPhieuNhap);

@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace BUS
 {
@@ -14,9 +15,14 @@ namespace BUS
             this.chiTietPhieuNhapDAO = new ChiTietPhieuNhapDAO();
         }
 
-        public List<ChiTietPhieuNhap> getAll()
+        public List<ChiTietPhieuNhap> getAllReturnList()
         {
-            return this.chiTietPhieuNhapDAO.getAll();
+            return this.chiTietPhieuNhapDAO.getAllReturnList();
+        }
+
+        public DataTable getAllReturnDataTable()
+        {
+            return this.chiTietPhieuNhapDAO.getAllReturnDataTable();
         }
 
         public ChiTietPhieuNhap getByID(int MaPhieuNhap, int MaSach)
@@ -27,6 +33,11 @@ namespace BUS
         public List<ChiTietPhieuNhap> getByMaPhieuNhap(int MaPhieuNhap)
         {
             return this.chiTietPhieuNhapDAO.getByMaPhieuNhap(MaPhieuNhap);
+        }
+
+        public DataTable getByMaPhieuNhapReturnDataTable(int MaPhieuNhap)
+        {
+            return this.chiTietPhieuNhapDAO.getByMaPhieuNhapReturnDataTable(MaPhieuNhap);
         }
 
         public Boolean insert(ChiTietPhieuNhap chiTietPhieuNhap)

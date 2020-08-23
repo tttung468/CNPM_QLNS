@@ -54,7 +54,8 @@ namespace DAO
             }
             catch (Exception ex)
             {
-                throw new Exception("Error execute query: " + ex.Message);
+                //throw new Exception("Error execute query: " + ex.Message);
+                Console.WriteLine("Error execute query: " + ex.Message);
             }
             finally
             {
@@ -92,7 +93,8 @@ namespace DAO
             catch (Exception ex)
             {
                 flag = false;
-                throw new Exception("Error execute non query: " + ex.Message);
+                //throw new Exception("Error execute non query: " + ex.Message);
+                Console.WriteLine("Error execute non query: " + ex.Message);
             }
             finally
             {

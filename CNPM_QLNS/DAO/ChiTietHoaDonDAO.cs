@@ -81,12 +81,25 @@ namespace DAO
             }
             return lstChiTietHoaDon;
         }
-     
 
+        public DataTable getByMaHoaDonReturnDataTable(int MaHoaDon)
+        {
+
+            String query = "select TenSach as [Tên sách], SoLuongMua as [Số lượng mua]" +
+                " from ChiTietHoaDon inner join Sach on ChiTietHoaDon.MaSach = Sach.MaSach" +
+                " where MaHoaDon = @MaHoaDon";
+
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+            SqlParameter param = new SqlParameter("MaHoaDon", MaHoaDon);
+            sqlParameters.Add(param);
+            DataTable dt = this.dp.ExecuteQuery(query, sqlParameters);
+
+            return dt;
+        }
         public Boolean insert(ChiTietHoaDon chiTietHoaDon)
         {
 
-            String query = "insert into ChiTietHoaDon(MaHoaDon,MaSach,SoLuongMua) values(@MaHoaDon, @MaSach, @SoLuongMua))";
+            String query = "insert into ChiTietHoaDon(MaHoaDon,MaSach,SoLuongMua) values(@MaHoaDon, @MaSach, @SoLuongMua)";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             SqlParameter param_MaHoaDon = new SqlParameter("MaHoaDon", chiTietHoaDon.MaHoaDon);

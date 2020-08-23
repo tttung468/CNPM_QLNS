@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace BUS
 {
@@ -14,9 +15,14 @@ namespace BUS
             this.phieuNhapDAO = new PhieuNhapDAO();
         }
 
-        public List<PhieuNhap> getAll()
+        public List<PhieuNhap> getAllReturnList()
         {
-            return this.phieuNhapDAO.getAll();
+            return this.phieuNhapDAO.getAllReturnList();
+        }
+
+        public DataTable getAllReturnDataTable()
+        {
+            return this.phieuNhapDAO.getAllReturnDataTable();
         }
 
         public PhieuNhap getByID(int maPhieuNhap)

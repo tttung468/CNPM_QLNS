@@ -15,7 +15,7 @@ namespace DAO
             dp = new DataProvider();
         }
 
-        public List<HoaDon> getAll()
+        public List<HoaDon> getALlReturnList()
         {
             String query = "select MaHoaDon,NgayLapHD,MaPhieuThu,MaKhachHang from HoaDon";
             DataTable dt = this.dp.ExecuteQuery(query);
@@ -32,6 +32,17 @@ namespace DAO
                 lstHoaDon.Add(hoaDon);
             }
             return lstHoaDon;
+        }
+
+        public DataTable getALlReturnDataTable()
+        {
+            String query = "select MaHoaDon as [Mã hóa đơn]," +
+                " NgayLapHD as [Ngày lập hóa đơn]," +
+                " HoTen as [Khách hàng], DienThoai as [Điện thoại]" +
+                " from HoaDon inner join KhachHang on HoaDon.MaKhachHang = KhachHang.MaKhachHang";
+            DataTable dt = this.dp.ExecuteQuery(query);
+
+            return dt;
         }
 
         public HoaDon getByID(int MaHoaDon)
@@ -60,15 +71,13 @@ namespace DAO
         public Boolean insert(HoaDon hoaDon)
         {
 
-            String query = "insert into HoaDon(NgayLapHD,MaPhieuThu,MaKhachHang) values(@NgayLapHD, @MaPhieuThu, @MaKhachHang)";
+            String query = "insert into HoaDon(NgayLapHD,MaKhachHang) values(@NgayLapHD, @MaKhachHang)";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             SqlParameter param_NgayLapHD = new SqlParameter("NgayLapHD", hoaDon.NgayLapHD);
-            SqlParameter param_MaPhieuThu = new SqlParameter("MaPhieuThu", hoaDon.MaPhieuThu);
             SqlParameter param_MaKhachHang = new SqlParameter("MaKhachHang", hoaDon.MaKhachHang);
 
             sqlParameters.Add(param_NgayLapHD);
-            sqlParameters.Add(param_MaPhieuThu);
             sqlParameters.Add(param_MaKhachHang);
 
             return this.dp.ExecuteNonQuery(query, sqlParameters);

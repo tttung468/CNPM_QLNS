@@ -15,7 +15,7 @@ namespace DAO
             dp = new DataProvider();
         }
 
-        public List<PhieuNhap> getAll()
+        public List<PhieuNhap> getAllReturnList()
         {
             String query = "select MaPhieuNhap,NgayNhap from PhieuNhap";
             DataTable dt = this.dp.ExecuteQuery(query);
@@ -31,6 +31,13 @@ namespace DAO
                 lstPhieuNhap.Add(phieuNhap);
             }
             return lstPhieuNhap;
+        }
+
+        public DataTable getAllReturnDataTable()
+        {
+            String query = "select MaPhieuNhap as [Mã phiếu nhập], NgayNhap as [Ngày nhập] from PhieuNhap";
+            DataTable dt = this.dp.ExecuteQuery(query);
+            return dt;
         }
 
         public PhieuNhap getByID(int MaPhieuNhap)
@@ -57,9 +64,10 @@ namespace DAO
         public Boolean insert(PhieuNhap phieuNhap)
         {
             String query = "insert PhieuNhap(NgayNhap) values( @NgayNhap)";
+            String formatDateTime = "yyyy-MM-dd HH:mm:ss";
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
-            SqlParameter param_NgayNhap = new SqlParameter("NgayNhap", phieuNhap.NgayNhap);
+            SqlParameter param_NgayNhap = new SqlParameter("NgayNhap", phieuNhap.NgayNhap.ToString(formatDateTime));
 
             sqlParameters.Add(param_NgayNhap);
 

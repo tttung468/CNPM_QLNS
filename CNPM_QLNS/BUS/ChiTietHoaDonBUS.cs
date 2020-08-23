@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace BUS
 {
@@ -22,6 +23,11 @@ namespace BUS
         public ChiTietHoaDon getByID(int MaHoaDon, int MaSach)
         {
             return this.chiTietHoaDonDAO.getByID(MaHoaDon, MaSach);
+        }
+
+        public DataTable getByMaHoaDonReturnDataTable(int MaHoaDon)
+        {
+            return this.chiTietHoaDonDAO.getByMaHoaDonReturnDataTable(MaHoaDon);
         }
 
         public List<ChiTietHoaDon> getByMaHoaDon(int MaHoaDon)
