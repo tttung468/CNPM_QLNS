@@ -7,7 +7,7 @@ GO
 CREATE TABLE PhieuThu
 (
 	MaPhieuThu int identity,
-	NgayThuTien date,
+	NgayThuTien DATETIME ,
 	SoTienThu money,
 	PRIMARY KEY(MaPhieuThu)
 )
@@ -28,7 +28,7 @@ GO
 CREATE TABLE HoaDon
 (
 	MaHoaDon int identity,
-	NgayLapHD date,
+	NgayLapHD DATETIME,
 	MaPhieuThu int,
 	MaKhachHang int,
 	PRIMARY KEY(MaHoaDon)
@@ -68,7 +68,7 @@ GO
 CREATE TABLE PhieuNhap
 (
 	MaPhieuNhap int identity,
-	NgayNhap date,
+	NgayNhap DATETIME ,
 	PRIMARY KEY(MaPhieuNhap)
 )
 GO
@@ -111,41 +111,41 @@ ALTER TABLE ChiTietPhieuNhap ADD CONSTRAINT FK_ChiTietPhieuNhap_Sach FOREIGN KEY
 
  /*Nhap du lieu cho bang Phieu Thu*/
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-14', 15000)
+ VALUES('2020-07-14 13:00:01', 15000)
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-14', 20000)
+ VALUES('2020-07-14 14:02:02', 20000)
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-14', 24000)
+ VALUES('2020-07-14 15:03:03', 24000)
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-15', 25000)
+ VALUES('2020-07-15 16:04:04', 25000)
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-15', 30000)
+ VALUES('2020-07-15 17:05:05', 30000)
   INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-15', 14000)
+ VALUES('2020-07-15 18:06:06', 14000)
   INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-16', 30000)
+ VALUES('2020-07-16 19:07:07', 30000)
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-16', 50000)
+ VALUES('2020-07-16 20:07:07', 50000)
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-16', 100000)
+ VALUES('2020-07-16 21:08:08', 100000)
  INSERT INTO PhieuThu (NgayThuTien, SoTienThu)
- VALUES('2020-07-16', 25000)
+ VALUES('2020-07-16 22:09:09', 25000)
 
  /*Nhap du lieu cho bang KhachHang*/
- INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
- VALUES('Nguyen Chi Cuong', '142 Pham Van Dong quan Thu Duc', '0321562141',0,0)
- INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
- VALUES('Huynh Nhat Duong', '242 Pham Van Dong quan Thu Duc', '0321232581',0,0)
- INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
+  INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
  VALUES('Thai Thanh Tung', '512 Dien Bien Phu quan Binh Thanh', '0329562163',0,0)
- INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
- VALUES('Tran Dinh Sang', '238 Nguyen Van Cu quan 5', '0321563145',0,0)
  INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
  VALUES('Nguyen Van An', '512 Vo Thi Sau quan 1', '0321564159',0,0)
  INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
  VALUES('Le Thi Anh', '123 Vo Van Tan quan 3', '0321124638',2000,2000)
  INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
  VALUES('Cao Van Vu', '421 Nguyen Tat Thanh quan 4', '0324156284',50000,50000)
+  INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
+ VALUES('Nguyen Chi Cuong', '142 Pham Van Dong quan Thu Duc', '0321562141',0,0)
+ INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
+ VALUES('Huynh Nhat Duong', '242 Pham Van Dong quan Thu Duc', '0321232581',0,0)
+ INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
+ VALUES('Tran Dinh Sang', '238 Nguyen Van Cu quan 5', '0321563145',0,0)
  INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
  VALUES('Nguyen Thi Nguyet', '132 Nguyen Van Cu quan 5', '0356482103',5000,5000)
  INSERT INTO KhachHang(HoTen,DiaChi,DienThoai,SoTienNoDau,SoTienNoCuoi)
@@ -177,9 +177,9 @@ ALTER TABLE ChiTietPhieuNhap ADD CONSTRAINT FK_ChiTietPhieuNhap_Sach FOREIGN KEY
 
   /*Nhap du lieu cho bang Sach*/
  INSERT INTO Sach(TenSach,MaTheLoai, TacGia, SoLuongTonDau,SoLuongTonCuoi, DonGia)
- VALUES('Doraemon', 1, 'Fujio',24,24, 18000)
+ VALUES('Doraemon', 1, 'Fujio',2400,2400, 18000)
  INSERT INTO Sach(TenSach,MaTheLoai, TacGia, SoLuongTonDau,SoLuongTonCuoi, DonGia)
- VALUES('Conam', 2, 'Goshu',38,38, 24000)
+ VALUES('Conam', 2, 'Goshu',380,380, 24000)
  INSERT INTO Sach(TenSach,MaTheLoai, TacGia, SoLuongTonDau,SoLuongTonCuoi, DonGia)
  VALUES('One Piece', 3, 'Oda',42,42, 20000)
  INSERT INTO Sach(TenSach,MaTheLoai, TacGia, SoLuongTonDau,SoLuongTonCuoi, DonGia)
@@ -199,47 +199,47 @@ ALTER TABLE ChiTietPhieuNhap ADD CONSTRAINT FK_ChiTietPhieuNhap_Sach FOREIGN KEY
 
   /*Nhap du lieu cho bang PhieuNhap*/
  INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-20')
+ VALUES('2020-05-20 13:01:01')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-21')
+ VALUES('2020-05-21 14:02:02')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-22')
+ VALUES('2020-05-22 15:00:00')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-23')
+ VALUES('2020-05-23 16:00:00')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-24')
+ VALUES('2020-05-24 17:00:00')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-25')
+ VALUES('2020-05-25 18:00:00')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-26')
+ VALUES('2020-05-26 19:00:00')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-27')
+ VALUES('2020-05-27 20:00:00')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-28')
+ VALUES('2020-05-28 21:00:00')
   INSERT INTO PhieuNhap(NgayNhap)
- VALUES('2020-05-29')
+ VALUES('2020-05-29 22:00:00')
 
  /*Nhap du lieu cho bang HoaDon*/
  INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-15', 2, 6)
+ VALUES('2020-07-15 13:00:00', 2, 6)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-16', 5, 2)
+ VALUES('2020-07-16 14:00:00', 5, 2)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-17', 6, 3)
+ VALUES('2020-07-17 15:00:00', 6, 3)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-18', 4, 4)
+ VALUES('2020-07-18 16:00:00', 4, 4)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-19', 3, 7)
+ VALUES('2020-07-19 17:00:00', 3, 7)
  INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-20', 9, 4)
+ VALUES('2020-07-20 18:00:00', 9, 4)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-21', 7, 3)
+ VALUES('2020-07-21 19:00:00', 7, 3)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-22', 10, 8)
+ VALUES('2020-07-22 20:00:00', 10, 8)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-23', 1, 6)
+ VALUES('2020-07-23 21:00:00', 1, 6)
   INSERT INTO HoaDon(NgayLapHD, MaPhieuThu, MaKhachHang)
- VALUES('2020-07-24', 4, 9)
+ VALUES('2020-07-24 22:00:00', 4, 9)
 
  /*Nhap du lieu cho bang ChiTietHoaDon*/
  INSERT INTO ChiTietHoaDon(MaHoaDon, MaSach, SoLuongMua)
